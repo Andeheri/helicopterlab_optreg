@@ -7,9 +7,9 @@
  *
  * Code generation for model "helicopter_dag_3".
  *
- * Model version              : 11.10
+ * Model version              : 11.13
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Sun Mar 10 10:50:15 2024
+ * C source code generated on : Mon Mar 11 15:37:15 2024
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -21,12 +21,9 @@
 #ifndef RTW_HEADER_helicopter_dag_3_h_
 #define RTW_HEADER_helicopter_dag_3_h_
 #include <math.h>
-#include <stddef.h>
 #include <string.h>
 #ifndef helicopter_dag_3_COMMON_INCLUDES_
 #define helicopter_dag_3_COMMON_INCLUDES_
-#include <stdio.h>
-#include <string.h>
 #include "rtwtypes.h"
 #include "zero_crossing_types.h"
 #include "simstruc.h"
@@ -868,6 +865,7 @@
 
 /* Block signals (default storage) */
 typedef struct {
+  real_T FromWorkspace[4];             /* '<Root>/From Workspace' */
   real_T TravelCounttorad;             /* '<S4>/Travel: Count to rad' */
   real_T Gain;                         /* '<S14>/Gain' */
   real_T Gain_d;                       /* '<S15>/Gain' */
@@ -879,10 +877,9 @@ typedef struct {
   real_T Sum;                          /* '<Root>/Sum' */
   real_T Gain_dg;                      /* '<S10>/Gain' */
   real_T Subtract[4];                  /* '<Root>/Subtract' */
+  real_T TmpSignalConversionAtToWorkspac[8];
   real_T FromWorkspace1[4];            /* '<S5>/From Workspace1' */
-  real_T FromWorkspace;                /* '<S5>/From Workspace' */
-  real_T Gain1;                        /* '<S5>/Gain1' */
-  real_T FromWorkspace_j[4];           /* '<Root>/From Workspace' */
+  real_T Subtract_a;                   /* '<S5>/Subtract' */
   real_T Gain_l;                       /* '<S13>/Gain' */
   real_T BackmotorSaturation;          /* '<S4>/Back motor: Saturation' */
   real_T FrontmotorSaturation;         /* '<S4>/Front motor: Saturation' */
@@ -910,8 +907,14 @@ typedef struct {
   t_card HILInitialize_Card;           /* '<Root>/HIL Initialize' */
   t_task HILReadEncoderTimebase_Task;  /* '<S4>/HIL Read Encoder Timebase' */
   struct {
-    void *FilePtr;
-  } ToFile_PWORK;                      /* '<Root>/To File' */
+    void *TimePtr;
+    void *DataPtr;
+    void *RSimInfoPtr;
+  } FromWorkspace_PWORK;               /* '<Root>/From Workspace' */
+
+  struct {
+    void *LoggedData;
+  } ToWorkspace_PWORK;                 /* '<Root>/To Workspace' */
 
   struct {
     void *TimePtr;
@@ -923,21 +926,15 @@ typedef struct {
     void *TimePtr;
     void *DataPtr;
     void *RSimInfoPtr;
-  } FromWorkspace_PWORK;               /* '<S5>/From Workspace' */
+  } FromWorkspace_PWORK_e;             /* '<S5>/From Workspace' */
 
   struct {
-    void *FilePtr;
-  } ToFile1_PWORK;                     /* '<Root>/To File1' */
+    void *LoggedData;
+  } ToWorkspace1_PWORK;                /* '<Root>/To Workspace1' */
 
   struct {
     void *LoggedData;
   } u_k_PWORK;                         /* '<Root>/u_k' */
-
-  struct {
-    void *TimePtr;
-    void *DataPtr;
-    void *RSimInfoPtr;
-  } FromWorkspace_PWORK_a;             /* '<Root>/From Workspace' */
 
   struct {
     void *LoggedData;
@@ -986,10 +983,6 @@ typedef struct {
 
   struct {
     void *LoggedData;
-  } Scope1_PWORK;                      /* '<S5>/Scope1' */
-
-  struct {
-    void *LoggedData;
   } XScope_PWORK;                      /* '<S6>/X: Scope' */
 
   struct {
@@ -1005,9 +998,8 @@ typedef struct {
   int32_T HILReadEncoderTimebase_Buffer[3];/* '<S4>/HIL Read Encoder Timebase' */
   uint32_T HILInitialize_POSortedChans[8];/* '<Root>/HIL Initialize' */
   struct {
-    int_T Count;
-    int_T Decimation;
-  } ToFile_IWORK;                      /* '<Root>/To File' */
+    int_T PrevIndex;
+  } FromWorkspace_IWORK;               /* '<Root>/From Workspace' */
 
   struct {
     int_T PrevIndex;
@@ -1015,16 +1007,7 @@ typedef struct {
 
   struct {
     int_T PrevIndex;
-  } FromWorkspace_IWORK;               /* '<S5>/From Workspace' */
-
-  struct {
-    int_T Count;
-    int_T Decimation;
-  } ToFile1_IWORK;                     /* '<Root>/To File1' */
-
-  struct {
-    int_T PrevIndex;
-  } FromWorkspace_IWORK_d;             /* '<Root>/From Workspace' */
+  } FromWorkspace_IWORK_p;             /* '<S5>/From Workspace' */
 
   int8_T If_ActiveSubsystem;           /* '<S3>/If' */
   int8_T IfActionSubsystem_SubsysRanBC;/* '<S3>/If Action Subsystem' */
@@ -1099,9 +1082,6 @@ struct P_helicopter_dag_3_T_ {
   real_T K_pp;                         /* Variable: K_pp
                                         * Referenced by: '<S7>/K_pp'
                                         */
-  real_T T_padding;                    /* Variable: T_padding
-                                        * Referenced by: '<S5>/Step'
-                                        */
   real_T Vd_ff;                        /* Variable: Vd_ff
                                         * Referenced by: '<Root>/Vd_bias'
                                         */
@@ -1113,12 +1093,6 @@ struct P_helicopter_dag_3_T_ {
                                         */
   real_T travel_gain;                  /* Variable: travel_gain
                                         * Referenced by: '<S4>/Travel_gain'
-                                        */
-  real_T ul;                           /* Variable: ul
-                                        * Referenced by: '<S5>/Saturation'
-                                        */
-  real_T uu;                           /* Variable: uu
-                                        * Referenced by: '<S5>/Saturation'
                                         */
   real_T x0[4];                        /* Variable: x0
                                         * Referenced by: '<Root>/Constant'
@@ -1236,21 +1210,6 @@ struct P_helicopter_dag_3_T_ {
                                         */
   real_T Gain1_Gain;                   /* Expression: pi/180
                                         * Referenced by: '<S2>/Gain1'
-                                        */
-  real_T Step_Y0;                      /* Expression: 0
-                                        * Referenced by: '<S5>/Step'
-                                        */
-  real_T Step_YFinal;                  /* Expression: 1
-                                        * Referenced by: '<S5>/Step'
-                                        */
-  real_T Constant_Value;               /* Expression: 0
-                                        * Referenced by: '<S5>/Constant'
-                                        */
-  real_T Switch_Threshold;             /* Expression: 0
-                                        * Referenced by: '<S5>/Switch'
-                                        */
-  real_T Gain1_Gain_g;                 /* Expression: -1
-                                        * Referenced by: '<S5>/Gain1'
                                         */
   real_T Integrator_IC;                /* Expression: 0
                                         * Referenced by: '<S3>/Integrator'

@@ -7,9 +7,9 @@
  *
  * Code generation for model "helicopter_dag_3".
  *
- * Model version              : 11.10
+ * Model version              : 11.13
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Sun Mar 10 10:50:15 2024
+ * C source code generated on : Mon Mar 11 15:37:15 2024
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -26,8 +26,8 @@ P_helicopter_dag_3_T helicopter_dag_3_P = {
   /* Variable: K1
    * Referenced by: '<S5>/Gain'
    */
-  { -0.095414606738554661, -0.70415804546111427, 0.39374235341207148,
-    0.10783515679873859 },
+  { -1.8725483573848762, -5.3735985008986615, 2.4536427738935491,
+    0.68239829435991128 },
 
   /* Variable: K_ed
    * Referenced by: '<S3>/K_ed'
@@ -54,11 +54,6 @@ P_helicopter_dag_3_T helicopter_dag_3_P = {
    */
   5.2777981651376153,
 
-  /* Variable: T_padding
-   * Referenced by: '<S5>/Step'
-   */
-  2.0,
-
   /* Variable: Vd_ff
    * Referenced by: '<Root>/Vd_bias'
    */
@@ -78,16 +73,6 @@ P_helicopter_dag_3_T helicopter_dag_3_P = {
    * Referenced by: '<S4>/Travel_gain'
    */
   1.0,
-
-  /* Variable: ul
-   * Referenced by: '<S5>/Saturation'
-   */
-  -0.52359877559829882,
-
-  /* Variable: uu
-   * Referenced by: '<S5>/Saturation'
-   */
-  0.52359877559829882,
 
   /* Variable: x0
    * Referenced by: '<Root>/Constant'
@@ -283,31 +268,6 @@ P_helicopter_dag_3_T helicopter_dag_3_P = {
    * Referenced by: '<S2>/Gain1'
    */
   0.017453292519943295,
-
-  /* Expression: 0
-   * Referenced by: '<S5>/Step'
-   */
-  0.0,
-
-  /* Expression: 1
-   * Referenced by: '<S5>/Step'
-   */
-  1.0,
-
-  /* Expression: 0
-   * Referenced by: '<S5>/Constant'
-   */
-  0.0,
-
-  /* Expression: 0
-   * Referenced by: '<S5>/Switch'
-   */
-  0.0,
-
-  /* Expression: -1
-   * Referenced by: '<S5>/Gain1'
-   */
-  -1.0,
 
   /* Expression: 0
    * Referenced by: '<S3>/Integrator'

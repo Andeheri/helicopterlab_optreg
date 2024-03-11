@@ -7,9 +7,9 @@
  *
  * Code generation for model "helicopter_dag_3".
  *
- * Model version              : 11.10
+ * Model version              : 11.13
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Sun Mar 10 10:50:15 2024
+ * C source code generated on : Mon Mar 11 15:37:15 2024
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -24,7 +24,7 @@
 #include "multiword_types.h"
 #include "zero_crossing_types.h"
 
-/* Used by FromWorkspace Block: '<S5>/From Workspace1' */
+/* Used by FromWorkspace Block: '<Root>/From Workspace' */
 #ifndef rtInterpolate
 # define rtInterpolate(v1,v2,f1,f2)    (((v1)==(v2))?((double)(v1)): (((f1)*((double)(v1)))+((f2)*((double)(v2)))))
 #endif
@@ -35,10 +35,6 @@
 
 /* A global buffer for storing error messages (defined in quanser_common library) */
 EXTERN char _rt_error_message[512];
-int_T rt_WriteMat4FileHeader(FILE *fp,
-  int32_T m,
-  int32_T n,
-  const char_T *name);
 
 /* private model entry point functions */
 extern void helicopter_dag_3_derivatives(void);

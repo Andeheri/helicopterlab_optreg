@@ -7,9 +7,9 @@
  *
  * Code generation for model "helicopter_dag_3".
  *
- * Model version              : 11.10
+ * Model version              : 11.13
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Sun Mar 10 10:50:15 2024
+ * C source code generated on : Mon Mar 11 15:37:15 2024
  *
  * Target selection: quarc_win64.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -64,7 +64,7 @@ static const char_T * rtDataTypeNames[] = {
 
 /* data type transitions for block I/O structure */
 static DataTypeTransition rtBTransitions[] = {
-  { (char_T *)(&helicopter_dag_3_B.TravelCounttorad), 0, 0, 30 }
+  { (char_T *)(&helicopter_dag_3_B.FromWorkspace[0]), 0, 0, 37 }
   ,
 
   { (char_T *)(&helicopter_dag_3_DW.HILInitialize_AIMinimums[0]), 0, 0, 70 },
@@ -75,13 +75,13 @@ static DataTypeTransition rtBTransitions[] = {
 
   { (char_T *)(&helicopter_dag_3_DW.HILReadEncoderTimebase_Task), 16, 0, 1 },
 
-  { (char_T *)(&helicopter_dag_3_DW.ToFile_PWORK.FilePtr), 11, 0, 21 },
+  { (char_T *)(&helicopter_dag_3_DW.FromWorkspace_PWORK.TimePtr), 11, 0, 20 },
 
   { (char_T *)(&helicopter_dag_3_DW.HILInitialize_ClockModes[0]), 6, 0, 46 },
 
   { (char_T *)(&helicopter_dag_3_DW.HILInitialize_POSortedChans[0]), 7, 0, 8 },
 
-  { (char_T *)(&helicopter_dag_3_DW.ToFile_IWORK.Count), 10, 0, 5 },
+  { (char_T *)(&helicopter_dag_3_DW.FromWorkspace_IWORK.PrevIndex), 10, 0, 3 },
 
   { (char_T *)(&helicopter_dag_3_DW.If_ActiveSubsystem), 2, 0, 2 }
 };
@@ -94,11 +94,11 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&helicopter_dag_3_P.K1[0]), 0, 0, 20 },
+  { (char_T *)(&helicopter_dag_3_P.K1[0]), 0, 0, 17 },
 
   { (char_T *)(&helicopter_dag_3_P.HILWriteAnalog_channels[0]), 7, 0, 2 },
 
-  { (char_T *)(&helicopter_dag_3_P.HILInitialize_OOTerminate), 0, 0, 61 },
+  { (char_T *)(&helicopter_dag_3_P.HILInitialize_OOTerminate), 0, 0, 56 },
 
   { (char_T *)(&helicopter_dag_3_P.HILInitialize_CKChannels[0]), 6, 0, 10 },
 
